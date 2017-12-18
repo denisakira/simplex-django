@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<title>Simplex</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	{% load static %}
+
+	<link rel="stylesheet" type="text/css" href="{% static 'mysite/css/bootstrap.css' %}">
+
+	<link rel="stylesheet" type="text/css" href="{% static 'mysite/css/style.css' %}" />
+
+</head>
+<body>
+	<h1>
+		Simplex
+	</h1>
+	<p>
+		<h2>
+		Função Objetivo:
+		</h2>
+		<form action="/simplex/" method="post" >
+			{% csrf_token %}
+
+			<select id="maxmin" name="maxmin">
+				<option selected id=Max">
+					Max
+				</option>
+				<option id="Min">
+					Min
+				</option>
+			</select>
+			<input id="x1" type="text" name="x1">
+			<label for="x1">.x1</label>
+			+
+			<input id="x2" type="text" name="x2">
+			<label for="x2">.x2</label>
+			<br>
+			<h2>
+				Restrições:
+			</h2>
+			<input id="r1x1" type="text" name="r1x1">
+			<label for="r1x1">.x1</label>
+			+
+			<input id="r1x2" type="text" name="r1x2">
+			<label for="r1x2">.x2</label>
+
+			<select id="maiormenorR1" name="maiormenorR1">
+				<option selected id=">=">
+					>=
+				</option>
+				<option id="=">
+					=
+				</option>
+				<option id="<=">
+					<=
+				</option>
+			</select>
+
+			<input id="b1" type="text" name="b1">
+			<label for="b1"></label>
+
+			<br><br>
+
+			<input id="r2x1" type="text" name="r2x1">
+			<label for="r2x1">.x1</label>
+			+
+			<input id="r2x2" type="text" name="r2x2">
+			<label for="r2x2">.x2</label>
+			<select id="maiormenorR2" name="maiormenorR2">
+				<option selected id=">=">
+					>=
+				</option>
+				<option id="=">
+					=
+				</option>
+				<option id="<=">
+					<=
+				</option>
+			</select>
+
+			<input id="b2" type="text" name="b2">
+			<label for="b2"></label>
+
+			<br><br>
+
+			<button type="submit" name="submit-btn">
+				OK
+			</button>
+		</form>
+
+	</p>
+
+<!-- Javascript -->
+<script src="{% static 'mysite/js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'mysite/js/popper.js' %}"></script>
+<script src="{% static 'mysite/js/bootstrap.js' %}"></script>
+
+</body>
+</html>

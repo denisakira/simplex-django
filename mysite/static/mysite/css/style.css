@@ -1,0 +1,13 @@
+h1, h2{
+    font-family: serif;
+    color: green;
+}
+
+p {
+    color: green;
+}
+
+label {
+    color: red;
+    font-family: "DejaVu Sans", serif;
+}
