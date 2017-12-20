@@ -1,28 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="30c2e6d7-975f-4590-8faf-aeabd7baeecf" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mysite/urls.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/templates/mysite/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/templates/mysite/simplex.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/templates/mysite/thanks.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/urls.py" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/b409b5f9-5070-4c0d-968c-16419171a92b/_metadata_/metadata" afterPath="$PROJECT_DIR$/.idea/dataSources/b409b5f9-5070-4c0d-968c-16419171a92b/_metadata_/metadata" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/b409b5f9-5070-4c0d-968c-16419171a92b/_metadata_/metadata.keystream" afterPath="$PROJECT_DIR$/.idea/dataSources/b409b5f9-5070-4c0d-968c-16419171a92b/_metadata_/metadata.keystream" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/b409b5f9-5070-4c0d-968c-16419171a92b/_metadata_/metadata.keystream.len" afterPath="$PROJECT_DIR$/.idea/dataSources/b409b5f9-5070-4c0d-968c-16419171a92b/_metadata_/metadata.keystream.len" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/b409b5f9-5070-4c0d-968c-16419171a92b/_metadata_/metadata.len" afterPath="$PROJECT_DIR$/.idea/dataSources/b409b5f9-5070-4c0d-968c-16419171a92b/_metadata_/metadata.len" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/b409b5f9-5070-4c0d-968c-16419171a92b/_metadata_/metadata_i" afterPath="$PROJECT_DIR$/.idea/dataSources/b409b5f9-5070-4c0d-968c-16419171a92b/_metadata_/metadata_i" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/b409b5f9-5070-4c0d-968c-16419171a92b/_metadata_/metadata_i.len" afterPath="$PROJECT_DIR$/.idea/dataSources/b409b5f9-5070-4c0d-968c-16419171a92b/_metadata_/metadata_i.len" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PO1_T1_V2/settings.py" afterPath="$PROJECT_DIR$/PO1_T1_V2/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PO1_T1_V2/urls.py" afterPath="$PROJECT_DIR$/PO1_T1_V2/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mysite/admin.py" afterPath="$PROJECT_DIR$/mysite/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mysite/static/mysite/css/style.css" afterPath="$PROJECT_DIR$/mysite/static/mysite/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mysite/views.py" afterPath="$PROJECT_DIR$/mysite/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/mysite/index.html" afterPath="$PROJECT_DIR$/templates/mysite/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/mysite/simplex.html" afterPath="$PROJECT_DIR$/templates/mysite/simplex.html" />
-    </list>
+    <list default="true" id="30c2e6d7-975f-4590-8faf-aeabd7baeecf" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -78,7 +57,7 @@
         <entry file="file://$PROJECT_DIR$/PO1_T1_V2/settings.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="2706">
-              <caret line="123" column="0" lean-forward="true" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
+              <caret line="123" column="0" lean-forward="false" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -88,7 +67,7 @@
         <entry file="file://$PROJECT_DIR$/mysite/static/mysite/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="352">
-              <caret line="16" column="1" lean-forward="true" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+              <caret line="16" column="1" lean-forward="false" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -193,12 +172,6 @@
               <item name="PO1_T1_V2" type="b2602c69:ProjectViewProjectNode" />
               <item name="PO1_T1_V2" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PO1_T1_V2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PO1_T1_V2" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="mysite" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -590,7 +563,7 @@
     <entry file="file://$PROJECT_DIR$/PO1_T1_V2/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2706">
-          <caret line="123" column="0" lean-forward="true" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
+          <caret line="123" column="0" lean-forward="false" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -598,7 +571,7 @@
     <entry file="file://$PROJECT_DIR$/mysite/static/mysite/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
-          <caret line="16" column="1" lean-forward="true" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+          <caret line="16" column="1" lean-forward="false" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
           <folding />
         </state>
       </provider>
