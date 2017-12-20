@@ -1,0 +1,7 @@
+Trabalho 1 de Pesquisa Operacional I.
+
+Denis Akira 	RA:161024181	
+
+Código do simplex disponível em: PO1_T1_V2/mysite/method.py
+
+Programa disponível em: denisakira.pythonanywhere.com

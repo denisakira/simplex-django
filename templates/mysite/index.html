@@ -10,12 +10,19 @@
 
 	{% load static %}
 
-	<link rel="stylesheet" type="text/css" href="{% static 'mysite/css/bootstrap.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'mysite/css/bootstrap.css' %}"/>
 
 	<link rel="stylesheet" type="text/css" href="{% static 'mysite/css/style.css' %}" />
 
 </head>
 <body>
+	<nav class="navbar navbar-dark bg-primary">
+		<a class="navbar-brand" href="/index/">Pesquisa Operacional</a>
+		<a class="nav-item" href="/index/">Simplex</a>
+		<a class="nav-item" href="/gomory/">Gomory</a>
+	</nav>
+
+
 	<h1>
 		Simplex
 	</h1>

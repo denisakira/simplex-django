@@ -11,3 +11,7 @@ label {
     color: red;
     font-family: "DejaVu Sans", serif;
 }
+
+nav > a{
+    color: white;
+}
