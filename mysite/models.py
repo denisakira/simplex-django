@@ -24,14 +24,21 @@ class Simplex(models.Model):
     r1x2 = models.FloatField()
     r2x1 = models.FloatField()
     r2x2 = models.FloatField()
+    r3x1 = models.FloatField()
+    r3x2 = models.FloatField()
+
     maxmin = models.CharField(choices=maxmin_choices, default=max_choice,
                               max_length=10)
     maiormenorR1 = models.CharField(choices=maiormenor_choices,
                                     default=maior, max_length=10)
     maiormenorR2 = models.CharField(choices=maiormenor_choices,
                                     default=maior,max_length=10)
+    maiormenorR3 = models.CharField(choices=maiormenor_choices,
+                                    default=maior,max_length=10)
+
     b1 = models.FloatField()
     b2 = models.FloatField()
+    b3 = models.FloatField()
 
 
     def __str__(self):

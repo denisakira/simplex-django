@@ -8,4 +8,10 @@ urlpatterns = [
     path('simplex/', views.get_simplex),
     path('thanks/', views.thanks),
     path('gomory/',views.gomory, name='gomory'),
+    path('simplex3/', views.simplex3, name='simplex3'),
+    path('get_simplex3/',views.get_simplex3),
+    path('simplexduasfases/',views.simplexduasfases),
+    path('simplex3duasfases/',views.simplex3duasfases),
+    path('get_simplexduasfases/',views.get_simplexduasfases,name='get_simplexduasfases'),
+    path('get_simplex3duasfases/',views.get_simplex3duasfases),
 ]

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 	<title>Simplex</title>
@@ -25,14 +24,14 @@
 
 
 	<h1>
-		Simplex
+		Simplex Duas Fases
 	</h1>
 
-	<form action="/index/" method="post">
+	<form action="/simplexduasfases/" method="post">
 		{% csrf_token %}
 		<button type="submit">Duas restrições</button>
 	</form>
-	<form action="/simplex3/" method="post">
+	<form action="/simplex3duasfases/" method="post">
 		{% csrf_token %}
 		<button type="submit">Três restrições</button>
 	</form>
@@ -41,7 +40,7 @@
 		<h2>
 		Função Objetivo:
 		</h2>
-		<form action="/simplex/" method="post" >
+		<form action="/get_simplexduasfases/" method="post" >
 			{% csrf_token %}
 
 			<select id="maxmin" name="maxmin">
