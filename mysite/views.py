@@ -2,7 +2,7 @@
 from django.shortcuts import render
 from .forms import SimplexForm
 from .simplex import simplex_v2,simplex3_v2
-from .simplexduasfases_method import simplexduasfases_method
+from .simplexduasfases_method import simplexduasfases_method, simplex3duasfases_method
 
 # Create your views here.
 
@@ -554,7 +554,8 @@ def get_simplex3duasfases(request):
         x9 = M
 
         if m['rx3']=='>' and m['rx4']=='>' and m['rx7']=='>':
-            c=[x1,x2,x3,x4,x5,x6,x7,x9]
+            c=[x1,x2,0,0,0,0,0,0]
+            cA = [0,0,0,0,1,1,0,1]
             r1 = [float(m.get('r1x1')), float(m.get('r1x2')), float(m.get('r1x3')),
                   float(m.get('r1x4')),float(m.get('r1x5')),float(m.get('r1x6')),
                   float(m.get('r1x7')), float(m.get('r1x9'))]
@@ -567,7 +568,8 @@ def get_simplex3duasfases(request):
 
 
         elif m['rx3']=='>' and m['rx4']=='>' and m['rx7']=='<':
-            c=[x1,x2,x3,x4,x5,x6,x7]
+            c=[x1,x2,0,0,0,0,0]
+            cA=[0,0,0,0,1,1,0]
             r1 = [float(m.get('r1x1')), float(m.get('r1x2')), float(m.get('r1x3')),
                   float(m.get('r1x4')),float(m.get('r1x5')),float(m.get('r1x6')),
                   float(m.get('r1x7'))]
@@ -579,7 +581,8 @@ def get_simplex3duasfases(request):
                   float(m.get('r3x7'))]
 
         elif m['rx3']=='>' and m['rx4']=='<' and m['rx7']=='>':
-            c=[x1,x2,x3,x4,x5,x7,x9]
+            c=[x1,x2,0,0,0,0,0]
+            cA = [0,0,0,0,1,0,1]
             r1 = [float(m.get('r1x1')), float(m.get('r1x2')), float(m.get('r1x3')),
                   float(m.get('r1x4')),float(m.get('r1x5')),
                   float(m.get('r1x7')), float(m.get('r1x9'))]
@@ -591,7 +594,8 @@ def get_simplex3duasfases(request):
                   float(m.get('r3x7')), float(m.get('r3x9'))]
 
         elif m['rx3'] == '>' and m['rx4'] == '<' and m['rx7'] == '<':
-            c = [x1, x2, x3, x4, x5,x7]
+            c = [x1, x2, 0, 0, 0,0]
+            cA = [0,0,0,0,1,0]
             r1 = [float(m.get('r1x1')), float(m.get('r1x2')), float(m.get('r1x3')),
                   float(m.get('r1x4')), float(m.get('r1x5')),
                   float(m.get('r1x7'))]
@@ -603,7 +607,8 @@ def get_simplex3duasfases(request):
                   float(m.get('r3x7'))]
 
         elif m['rx3']=='<' and m['rx4']=='>' and m['rx7']=='>':
-            c=[x1,x2,x3,x4,x5,x7,x9]
+            c=[x1,x2,0,0,0,0,0]
+            cA = [0,0,0,0,1,0,1]
             r1 = [float(m.get('r1x1')), float(m.get('r1x2')), float(m.get('r1x3')),
                   float(m.get('r1x4')),float(m.get('r1x6')),
                   float(m.get('r1x7')), float(m.get('r1x9'))]
@@ -614,7 +619,8 @@ def get_simplex3duasfases(request):
                   float(m.get('r3x4')), float(m.get('r3x6')),
                   float(m.get('r3x7')), float(m.get('r3x9'))]
         elif m['rx3'] == '<' and m['rx4'] == '>' and m['rx7'] == '<':
-            c = [x1, x2, x3, x4, x6, x7]
+            c = [x1, x2, 0, 0, 0, 0]
+            cA = [0,0,0,0,1,0]
             r1 = [float(m.get('r1x1')), float(m.get('r1x2')), float(m.get('r1x3')),
                   float(m.get('r1x4')), float(m.get('r1x6')),
                   float(m.get('r1x7')), float(m.get('r1x9'))]
@@ -626,7 +632,8 @@ def get_simplex3duasfases(request):
                   float(m.get('r3x7')), float(m.get('r3x9'))]
 
         else:
-            c = [x1,x2,x3,x4,x7]
+            c = [x1,x2,0,0,0]
+            cA = [0,0,0,0,0]
             r1 = [float(m.get('r1x1')),float(m.get('r1x2')),float(m.get('r1x3')),
                   float(m.get('r1x4')),float(m.get('r1x7'))]
             r2 = [float(m.get('r2x1')),float(m.get('r2x2')),float(m.get('r2x3')),
@@ -642,8 +649,9 @@ def get_simplex3duasfases(request):
         A = [r1, r2, r3]
 
         cR = [0,0]
+        cRA = [0,0]
 
-        z = simplex3_v2(m,c,b,cB,A,cR)
+        z = simplex3duasfases_method(m,c,b,cB,A,cR,cA,cRA,cAB)
         if z==None:
             z = "não há solução"
         # check whether it's valid:
