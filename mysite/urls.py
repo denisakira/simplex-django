@@ -14,4 +14,6 @@ urlpatterns = [
     path('simplex3duasfases/',views.simplex3duasfases),
     path('get_simplexduasfases/',views.get_simplexduasfases,name='get_simplexduasfases'),
     path('get_simplex3duasfases/',views.get_simplex3duasfases),
+    path('get_gomory/',views.get_gomory),
+    path('gomory3/', views.gomory3),
 ]

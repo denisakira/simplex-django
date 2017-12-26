@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-	<title>Gomory</title>
+	<title>Gomory 3 variáveis</title>
 	<meta name="keywords" content="">
 	<meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,13 +21,13 @@
 		<a class="nav-item" href="/index/">Simplex</a>
 		<a class="nav-item" href="/gomory/">Gomory</a>
 		<a class="nav-item" href="/simplexduasfases/">Simplex Duas Fases</a>
+
 	</nav>
 
 
 	<h1>
 		Gomory
 	</h1>
-
 	<form action="/gomory/" method="post">
 		{% csrf_token %}
 		<button type="submit">Duas restrições</button>
@@ -36,12 +36,11 @@
 		{% csrf_token %}
 		<button type="submit">Três restrições</button>
 	</form>
-
 	<p>
 		<h2>
 		Função Objetivo:
 		</h2>
-		<form action="/simplex/" method="post" >
+		<form action="/get_simplex3/" method="post" >
 			{% csrf_token %}
 
 			<select id="maxmin" name="maxmin">
@@ -103,6 +102,28 @@
 
 			<input id="b2" type="text" name="b2">
 			<label for="b2"></label>
+
+			<br><br>
+
+			<input id="r3x1" type="text" name="r3x1">
+			<label for="r3x1">.x1</label>
+			+
+			<input id="r3x2" type="text" name="r3x2">
+			<label for="r3x2">.x2</label>
+			<select id="maiormenorR3" name="maiormenorR3">
+				<option selected id=">=">
+					>=
+				</option>
+				<option id="=">
+					=
+				</option>
+				<option id="<=">
+					<=
+				</option>
+			</select>
+
+			<input id="b3" type="text" name="b3">
+			<label for="b3"></label>
 
 			<br><br>
 
