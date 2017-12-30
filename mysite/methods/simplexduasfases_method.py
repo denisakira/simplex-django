@@ -1,5 +1,5 @@
 import numpy as np
-from mysite.methods.simplex import simplex_v2, simplex3_v2
+from mysite.methods.simplex_method import simplex_v2, simplex3_v2
 
 def simplexduasfases_method(m,c,b,cB,A,cR,cA,cRA,cAB):
     cR = c - np.dot(cB,A)
@@ -31,20 +31,29 @@ def simplexduasfases_method(m,c,b,cB,A,cR,cA,cRA,cAB):
 
     aux0 = []
     aux1 = []
+    aux2 = []
     for i in range(len(A[0])):
         aux0.append(A[indexB][i]/A[indexB][indexN])
     b[indexB] = b[indexB]/A[indexB][indexN]
 
-    for i in range(len(A[0])):
-        aux1.append(A[not indexB][i] - aux0[i]*A[not indexB][indexN])
-    b[not indexB] = b[not indexB] - b[indexB]*A[not indexB][indexN]
+    for j in range(len(A)):
+        if j!=indexB:
+            for i in range(len(A[0])):
+                aux1.append(A[j][i] - aux0[i] * A[j][indexN])
+            b[j] = b[j] - b[indexB] * A[j][indexN]
+            aux2.append(aux1)
+            del aux1
+            aux1=[]
 
     cB[indexB] = c[indexN]
 
-    cAB[indexB] = cA[indexN]
-
-    A[indexB] = aux0
-    A[not indexB] = aux1
+    k=0
+    for i in range(len(A)):
+        if i == indexB:
+            A[i] = aux0
+        else:
+            A[i] = aux2[k]
+            k+=1
 
     z = simplexduasfases_method(m,c,b,cB,A,cR,cA,cRA,cAB)
 
@@ -96,18 +105,14 @@ def simplex3duasfases_method(m,c,b,cB,A,cR,cA,cRA,cAB):
             aux1 = []
 
     cB[indexB] = c[indexN]
-    aux3 = aux2[0]
-    aux4 = aux2[1]
 
+    k=0
     for i in range(len(A)):
         if i == indexB:
             A[i] = aux0
         else:
-            if f3 == False:
-                A[i] = aux3
-                f3 = True
-            else:
-                A[i] = aux4
+            A[i] = aux2[k]
+            k+=1
 
     cAB[indexB] = cA[indexN]
 

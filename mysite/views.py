@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render
 from .forms import SimplexForm
-from mysite.methods.simplex import simplex_v2,simplex3_v2
+from mysite.methods.simplex_method import simplex_v2,simplex3_v2
 from mysite.methods.simplexduasfases_method import simplexduasfases_method, simplex3duasfases_method
-from mysite.methods.gomorymethod import gomory_method
+from mysite.methods.gomory_method import gomory_method
 from mysite.handlers.form_handler import get_formdata, get_formdata3
 from mysite.handlers.data_handler import get_data, get_data3, get_data_duasfases, \
-    get_data_duasfases3
+    get_data_duasfases3, get_datav2
 
 # Create your views here.
 
@@ -35,7 +35,7 @@ def get_simplex(request):
         form = SimplexForm(request.POST)
         # recebe todos os valores do form
         m = get_formdata(form)
-        Obj = get_data(m)
+        Obj = get_datav2(m)
 
         c=Obj[0]
         A=Obj[1]
@@ -189,17 +189,14 @@ def get_gomory(request):
         form = SimplexForm(request.POST)
         # recebe todos os valores do form
         m = get_formdata(form)
-        obj = get_data(m)
-
+        obj = get_datav2(m)
         c = obj[0]
         A = obj[1]
+
         # primeira iteracao
         cB = [0, 0]
-
         b = [float(m.get('b1')), float(m.get('b2'))]
-
         cR = [0,0]
-
         z = gomory_method(m,c,b,cB,A,cR)
 
         if z==None:

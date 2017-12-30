@@ -1,3 +1,5 @@
+import numpy as np
+
 def get_data(m):
     M = 9999
     x1 = float(m.get('x1'))
@@ -37,6 +39,46 @@ def get_data(m):
     Obj = [c,A]
 
     return Obj
+
+def get_datav2(m):
+    M = 9999
+    x1 = float(m.get('x1'))
+    x2 = float(m.get('x2'))
+    x3 = 0
+    x4 = 0
+    x5 = M
+    x6 = M
+
+    r1 = np.array([float(m.get('r1x1')), float(m.get('r1x2'))])
+    r2 = np.array([float(m.get('r2x1')), float(m.get('r2x2'))])
+    c = np.array([x1,x2])
+
+    if m['rx3'] == '>':
+        c = np.append(c,[x3,x5])
+        r1 = np.append(r1,[float(m.get('r1x3')),float(m.get('r1x5'))])
+        r2 = np.append(r2[float(m.get('r2x3')),float(m.get('r2x5'))])
+    elif m['rx3'] == '<':
+        c = np.append(c,[x3])
+        r1 = np.append(r1,[float(m.get('r1x3'))])
+        r2 = np.append(r2,[float(m.get('r2x3'))])
+    elif m['rx3'] == '=':
+        pass
+
+    if m['rx4'] == '>':
+        c = np.append(c,[x4,x6])
+        r1 = np.append(r1,[float(m.get('r1x4')),float(m.get('r1x6'))])
+        r2 = np.append(r2,[float(m.get('r2x4')),float(m.get('r2x6'))])
+    elif m['rx4'] == '<':
+        c = np.append(c,[x4])
+        r1 = np.append(r1,float(m.get('r1x4')))
+        r2 = np.append(r2,float(m.get('r2x4')))
+    elif m['rx4'] == '=':
+        pass
+
+    A = [r1,r2]
+    obj = [c,A]
+
+    return obj
 
 def get_data3(m):
     M = 9999

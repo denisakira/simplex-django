@@ -35,6 +35,8 @@ def get_formdata(form):
                 m['rx3'] = '<'
                 m['r1x3'] = 1
                 m['r2x3'] = 0
+            elif form[i].value() == "=":
+                m['rx3'] = '='
         elif i == 'maiormenorR2':
             if form[i].value() == ">=":
                 m['rx4'] = '>'
@@ -46,6 +48,8 @@ def get_formdata(form):
                 m['rx4'] = '<'
                 m['r1x4'] = 0
                 m['r2x4'] = 1
+            elif form[i].value() == '=':
+                m['rx4'] = '='
     return m
 
 def get_formdata3(form):
@@ -80,6 +84,7 @@ def get_formdata3(form):
                 m['x1'] = float(form['x1'].value())
                 m['x2'] = float(form['x2'].value())
                 cN = [m['x1'], m['x2']]
+
         elif i == 'maiormenorR1':
             if form[i].value() == ">=":
                 m['rx3'] = '>'
@@ -94,6 +99,9 @@ def get_formdata3(form):
                 m['r1x3'] = 1
                 m['r2x3'] = 0
                 m['r3x3'] = 0
+            elif form[i].value() == '=':
+                m['rx4'] = '='
+
         elif i == 'maiormenorR2':
             if form[i].value() == ">=":
                 m['rx4'] = '>'
@@ -108,6 +116,9 @@ def get_formdata3(form):
                 m['r1x4'] = 0
                 m['r2x4'] = 1
                 m['r3x4'] = 0
+            elif form[i].value() == '=':
+                m['rx4'] = '='
+
         elif i == 'maiormenorR3':
             if form[i].value() == ">=":
                 m['rx7'] = '>'
@@ -122,6 +133,8 @@ def get_formdata3(form):
                 m['r1x7'] = 0
                 m['r2x7'] = 0
                 m['r3x7'] = 1
+            elif form[i].value() == '=':
+                m['rx4'] = '='
 
     return m
 
