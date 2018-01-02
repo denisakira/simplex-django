@@ -318,3 +318,44 @@ def get_data_duasfases3(m):
 
     A = [r1,r2,r3]
     obj = [c,cA,A]
+
+def add_restr(A,b,c,cB):
+    M = 9999
+
+    for i in range(len(c)):
+        if c[i]==M:
+            indexDel = i
+            c = np.delete(c,i,0)
+            A = np.delete(A,i,1)
+
+
+    # Em loop:
+    # Pega o index do menor valor de b. Se for inteiro, cria uma máscara excluindo esse valor
+    # Se não, sai do loop, e indexInt será o index.
+    check = False
+    while check != True:
+        indexInt = np.argmin(b)
+        if b[indexInt] % 1 == 0:
+            b = np.ma.masked_where(b == b[indexInt], b)
+        else:
+            check = True
+
+    #Atribui os valores encontrados a variáveis que compõe a nova linha de restrição
+    AInt = np.array(A[indexInt]) % 1
+    AInt = np.append(AInt,[-1,1])
+    bInt = b[indexInt] % 1
+
+#    tam = tamanho do eixo 0 (linhas) de A
+#    São adicionados dois 0's para cada linha de A, representando o espaço para as novas
+#    variáveis, que já foram adicionadas em AInt
+    tam = np.size(A,0)
+    A = np.append(A,np.array(tam*[[0,0]]), axis=1)
+
+    A = np.append(A, [AInt], axis=0)
+    b = np.append(b, bInt)
+    c = np.append(c,[0,M])
+    cB = np.append(cB,M)
+
+    obj = [A,b,c,cB]
+
+    return obj

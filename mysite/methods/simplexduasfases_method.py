@@ -79,7 +79,7 @@ def simplex3duasfases_method(m,c,b,cB,A,cR,cA,cRA,cAB):
     bA = []
     for i in range(len(b)):
         if A[i][indexN] == 0:
-            return None
+            bA.append(float("inf"))
         else:
             bA.append(b[i] / A[i][indexN])
 

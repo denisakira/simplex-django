@@ -7,7 +7,7 @@ from mysite.methods.gomory_method import gomory_method
 from mysite.handlers.form_handler import get_formdata, get_formdata3
 from mysite.handlers.data_handler import get_data, get_data3, get_data_duasfases, \
     get_data_duasfases3, get_datav2
-
+import numpy as np
 # Create your views here.
 
 def index(request):
@@ -37,13 +37,13 @@ def get_simplex(request):
         m = get_formdata(form)
         Obj = get_datav2(m)
 
-        c=Obj[0]
-        A=Obj[1]
+        c=np.array(Obj[0])
+        A=np.array(Obj[1])
 
         # primeira iteracao
         cB = [0, 0]
 
-        b = [float(m.get('b1')), float(m.get('b2'))]
+        b = np.array([float(m.get('b1')), float(m.get('b2'))])
 
         cR = [0,0]
 
@@ -75,12 +75,12 @@ def get_simplex3(request):
         obj = get_data3(m)
 
         c = obj[0]
-        A = obj[1]
+        A = np.array(obj[1])
 
         # primeira iteracao
         cB = [0, 0, 0]
 
-        b = [float(m.get('b1')), float(m.get('b2')),float(m.get('b3'))]
+        b = np.array([float(m.get('b1')), float(m.get('b2')),float(m.get('b3'))])
 
         cR = [0,0]
 
@@ -112,16 +112,16 @@ def get_simplexduasfases(request):
         m = get_formdata(form)
         obj = get_data_duasfases(m)
 
-        c = obj[0]
-        cA = obj[1]
-        A = obj[2]
+        c = np.array(obj[0])
+        cA = np.array(obj[1])
+        A = np.array(obj[2])
 
         # primeira iteracao
         cB = [0, 0]
 
         cAB = [0,0]
 
-        b = [float(m.get('b1')), float(m.get('b2'))]
+        b = np.array([float(m.get('b1')), float(m.get('b2'))])
 
 
         cR = [0,0]
@@ -153,13 +153,13 @@ def get_simplex3duasfases(request):
         # recebe todos os valores do form
         m = get_formdata3(form)
         obj = get_data_duasfases3(m)
-        c = obj[0]
-        cA = obj[1]
-        A = obj[2]
+        c = np.array(obj[0])
+        cA = np.array(obj[1])
+        A = np.array(obj[2])
         # primeira iteracao
         cB = [0, 0, 0]
 
-        b = [float(m.get('b1')), float(m.get('b2')),float(m.get('b3'))]
+        b = np.array([float(m.get('b1')), float(m.get('b2')),float(m.get('b3'))])
 
         cR = [0,0]
         cRA = [0,0]
@@ -190,21 +190,17 @@ def get_gomory(request):
         # recebe todos os valores do form
         m = get_formdata(form)
         obj = get_datav2(m)
-        c = obj[0]
-        A = obj[1]
+        c = np.array(obj[0])
+        A = np.array(obj[1])
 
         # primeira iteracao
-        cB = [0, 0]
-        b = [float(m.get('b1')), float(m.get('b2'))]
+        cB = np.array([0, 0])
+        b = np.array([float(m.get('b1')), float(m.get('b2'))])
         cR = [0,0]
         z = gomory_method(m,c,b,cB,A,cR)
-
         if z==None:
             z = "não há solução"
-        # check whether it's valid:
-        # process the data in form.cleaned_data as required
-        # ...
-        # redirect to a new URL:
+
         return render(request,'mysite/simplex.html',
                       {'z': z})
 
