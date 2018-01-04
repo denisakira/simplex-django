@@ -19,12 +19,14 @@ def simplexduasfases_method(m,c,b,cB,A,cR,cA,cRA,cAB):
     bA = []
     for i in range(len(b)):
         if A[i][indexN] == 0:
-            return None
+            bA.append(999999)
         else:
             bA.append(b[i]/A[i][indexN])
 
     if max(bA)<0:
         return float("inf")
+    if min(bA) == 999999:
+        return None
 
     mask = np.ma.masked_less_equal(bA,0)
     indexB = np.argmin(mask)
@@ -79,12 +81,14 @@ def simplex3duasfases_method(m,c,b,cB,A,cR,cA,cRA,cAB):
     bA = []
     for i in range(len(b)):
         if A[i][indexN] == 0:
-            bA.append(float("inf"))
+            bA.append(999999)
         else:
-            bA.append(b[i] / A[i][indexN])
+            bA.append(b[i]/A[i][indexN])
 
-    if max(bA) < 0:
+    if max(bA)<0:
         return float("inf")
+    if min(bA) == 999999:
+        return None
 
     mask = np.ma.masked_less_equal(bA, 0)
     indexB = np.argmin(mask)

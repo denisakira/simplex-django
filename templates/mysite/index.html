@@ -1,29 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-	<title>Simplex</title>
-	<meta name="keywords" content="">
-	<meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+{% extends 'mysite/base.html' %}
 
-	{% load static %}
-
-	<link rel="stylesheet" type="text/css" href="{% static 'mysite/css/bootstrap.css' %}"/>
-
-	<link rel="stylesheet" type="text/css" href="{% static 'mysite/css/style.css' %}" />
-
-</head>
-<body>
-	<nav class="navbar navbar-dark bg-primary">
-		<a class="navbar-brand" href="/index/">Pesquisa Operacional</a>
-		<a class="nav-item" href="/index/">Simplex</a>
-		<a class="nav-item" href="/gomory/">Gomory</a>
-		<a class="nav-item" href="/simplexduasfases/">Simplex Duas Fases</a>
-	</nav>
-
-
+{% block content %}
 	<h1>
 		Simplex
 	</h1>
@@ -112,11 +89,4 @@
 		</form>
 
 	</p>
-
-<!-- Javascript -->
-<script src="{% static 'mysite/js/jquery-3.2.1.min.js' %}"></script>
-<script src="{% static 'mysite/js/popper.js' %}"></script>
-<script src="{% static 'mysite/js/bootstrap.js' %}"></script>
-
-</body>
-</html>
+{% endblock %}

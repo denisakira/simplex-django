@@ -15,3 +15,8 @@ label {
 nav > a{
     color: white;
 }
+
+a{
+    font-size: 1.4em;
+    color: blue;
+}

@@ -1,0 +1,35 @@
+{% extends 'mysite/base.html' %}
+
+{% block title %}
+	Transporte
+{% endblock %}
+
+{% block content %}
+	<div class="form-group">
+		<h1>
+			Transporte
+		</h1>
+		<form action="/get_transporte_number/" method="post">
+			{% csrf_token %}
+			{{ number }}
+			<br>
+			<button type="submit" name="submit-btn">
+				Ok
+			</button>
+		</form>
+		<br>
+		{% if check == True %}
+			<form action="/get_transporte/" method="post" >
+				{% csrf_token %}
+				{{ oferta_formset }}
+				<br><Br>
+				{{ demanda_formset }}
+				<br><br>
+				<button type="submit" name="submit-btn">
+					OK
+				</button>
+			</form>
+		{% endif %}
+
+	</div>
+{% endblock %}

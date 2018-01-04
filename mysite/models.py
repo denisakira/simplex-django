@@ -40,6 +40,19 @@ class Simplex(models.Model):
     b2 = models.FloatField()
     b3 = models.FloatField()
 
-
     def __str__(self):
         return "x1="+str(self.x1)+"; x2="+str(self.x2)
+
+
+class Oferta(models.Model):
+    O = models.FloatField()
+
+    def __str__(self):
+        return "O: "+str(self.x)
+
+
+class Demanda(models.Model):
+    D = models.FloatField()
+
+    def __str__(self):
+        return "D:"+str(self.rx)
