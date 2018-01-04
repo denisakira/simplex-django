@@ -6,6 +6,9 @@
 
 {% block content %}
 	<div class="form-group">
+		<script>
+			var cont = {{ cont }}
+		</script>
 		<h1>
 			Transporte
 		</h1>
@@ -21,9 +24,34 @@
 		{% if check == True %}
 			<form action="/get_transporte/" method="post" >
 				{% csrf_token %}
+				<h2>Oferta</h2>
+				<br>
 				{{ oferta_formset }}
 				<br><Br>
+				<h2>Demanda</h2>
+				<br>
 				{{ demanda_formset }}
+				<br>
+				<h2>Pesos</h2>
+				<br>
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+
+							{{ formset.management_form }}
+							{% for form in peso_formset %}
+								{{ form }}
+								<script type="text/javascript">
+                                    cont-=1;
+                                    if(cont==0){
+                                        cont = {{ cont }};
+                                        document.write('<br>');
+                                    }
+								</script>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
 				<br><br>
 				<button type="submit" name="submit-btn">
 					OK

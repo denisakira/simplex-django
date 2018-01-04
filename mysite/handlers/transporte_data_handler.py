@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def no_ficticio(obj):
     oferta = obj[0]
     demanda = obj[1]
@@ -22,7 +23,7 @@ def get_transporte_data(of,dem):
     for i in dem:
         demanda = np.append(demanda, np.fromiter(iter(i.values()), dtype=float))
 
-    obj = [oferta,demanda]
+    obj = [oferta, demanda]
     obj = no_ficticio(obj)
 
     print(obj)

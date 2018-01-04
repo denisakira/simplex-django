@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render, render_to_response
 from django.forms import formset_factory
-from .forms import SimplexForm, OfertaForm, NumberForm, DemandaForm
+from .forms import SimplexForm, OfertaForm, NumberForm, DemandaForm, PesoForm
 from mysite.methods.simplex_method import simplex_v2,simplex3_v2
 from mysite.methods.simplexduasfases_method import simplexduasfases_method, simplex3duasfases_method
 from mysite.methods.gomory_method import gomory_method
@@ -45,13 +45,17 @@ def get_transporte_number(request):
         numero_demanda = request.POST.get('Demanda')
         OfertaFormSet = formset_factory(OfertaForm, extra=int(numero_oferta))
         DemandaFormSet = formset_factory(DemandaForm, extra=int(numero_demanda))
+        pesoFormSet = formset_factory(PesoForm, extra=(int(numero_oferta)*int(numero_demanda)))
         oferta_form = OfertaFormSet(prefix='oferta')
         demanda_form = DemandaFormSet(prefix='demanda')
+        peso_form = pesoFormSet(prefix='peso')
         return render(request,'mysite/transporte.html',
                       {
                           'number': number_form,
                           'oferta_formset': oferta_form,
                           'demanda_formset': demanda_form,
+                          'peso_formset': peso_form,
+                          'cont': int(numero_demanda),
                           'check': True
                       })
 
@@ -63,7 +67,6 @@ def get_transporte(request):
         demanda_form = DemandaFormSet(request.POST, prefix='demanda')
         if oferta_form.is_valid() and demanda_form.is_valid():
             obj = get_transporte_data(oferta_form.cleaned_data, demanda_form.cleaned_data)
-
             oferta = obj[0]
             demanda = obj[1]
 

@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import formset_factory
-from .models import Simplex, Oferta, Demanda
+from .models import Simplex, Oferta, Demanda, Peso
 
 class SimplexForm(forms.ModelForm):
     class Meta:
@@ -18,6 +18,15 @@ class DemandaForm(forms.ModelForm):
         fields = "__all__"
 
 class NumberForm(forms.Form):
-    lista = ((0,0),(1,1),(2,2),(3,3),(4,4),(5,5))
+    lista = ((1,1),(2,2),(3,3),(4,4),(5,5))
     Oferta = forms.ChoiceField(choices=lista)
     Demanda = forms.ChoiceField(choices=lista)
+
+class PesoForm(forms.ModelForm):
+    class Meta:
+        model = Peso
+        fields = "__all__"
+        widgets = {
+            'P': forms.NumberInput(attrs={'cols': 2, 'rows': 1}),
+        }
+

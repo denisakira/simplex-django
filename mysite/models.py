@@ -48,11 +48,17 @@ class Oferta(models.Model):
     O = models.FloatField()
 
     def __str__(self):
-        return "O: "+str(self.x)
+        return "O: "+str(self.O)
 
 
 class Demanda(models.Model):
     D = models.FloatField()
 
     def __str__(self):
-        return "D:"+str(self.rx)
+        return "D:"+str(self.D)
+
+class Peso(models.Model):
+    P = models.FloatField()
+
+    def __str__(self):
+        return "P:"+str(self.P)
