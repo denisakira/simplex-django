@@ -27,18 +27,28 @@
 				<h2>Oferta</h2>
 				<br>
 				{{ oferta_formset }}
-				<br><Br>
+				<br><br>
 				<h2>Demanda</h2>
 				<br>
 				{{ demanda_formset }}
 				<br>
-				<h2>Pesos</h2>
+				<h2 class="text-md-left">Pesos</h2>
 				<br>
 				<div class="container">
 					<div class="row">
-						<div class="col-12">
+						<div class="col-3">
+							<h3>
+								<div class="text-md-right">
+									<br>
+									Oferta
+								</div>
 
-							{{ formset.management_form }}
+							</h3>
+						</div>
+
+						<div class="col-6">
+							<h3>Demanda</h3>
+							{{ peso_formset.management_form }}
 							{% for form in peso_formset %}
 								{{ form }}
 								<script type="text/javascript">
@@ -49,13 +59,15 @@
                                     }
 								</script>
 							{% endfor %}
+
+							<br><br>
+							<button type="submit" name="submit-btn">
+								OK
+							</button>
+
 						</div>
 					</div>
 				</div>
-				<br><br>
-				<button type="submit" name="submit-btn">
-					OK
-				</button>
 			</form>
 		{% endif %}
 

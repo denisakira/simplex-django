@@ -1,4 +1,4 @@
-h1, h2{
+h1, h2, h3 {
     font-family: serif;
     color: green;
 }
@@ -8,7 +8,7 @@ p {
 }
 
 label {
-    color: red;
+    color: mediumpurple;
     font-family: "DejaVu Sans", serif;
 }
 

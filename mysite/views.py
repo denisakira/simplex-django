@@ -1,35 +1,42 @@
 # -*- coding: utf-8 -*-
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render
 from django.forms import formset_factory
 from .forms import SimplexForm, OfertaForm, NumberForm, DemandaForm, PesoForm
 from mysite.methods.simplex_method import simplex_v2,simplex3_v2
 from mysite.methods.simplexduasfases_method import simplexduasfases_method, simplex3duasfases_method
 from mysite.methods.gomory_method import gomory_method
-from mysite.methods.transporte_method import canto_noroeste
+from mysite.methods.transporte_method import canto_noroeste, simplex_transporte
 from mysite.handlers.form_handler import get_formdata, get_formdata3
-from mysite.handlers.data_handler import get_data, get_data3, get_data_duasfases, \
+from mysite.handlers.data_handler import get_data3, get_data_duasfases, \
     get_data_duasfases3, get_datav2
 from mysite.handlers.transporte_data_handler import get_transporte_data
 import numpy as np
 # Create your views here.
 
+
 def index(request):
     return render(request, 'mysite/index.html')
+
 
 def simplex3(request):
     return render(request, 'mysite/simplex3.html')
 
+
 def simplexduasfases(request):
     return render(request, 'mysite/simplexduasfases.html')
+
 
 def simplex3duasfases(request):
     return render(request, 'mysite/simplex3duasfases.html')
 
+
 def gomory(request):
     return render(request, 'mysite/gomory.html')
 
+
 def gomory3(request):
     return render(request, 'mysite/gomory3.html')
+
 
 def transporte(request):
     number = NumberForm()
@@ -38,17 +45,18 @@ def transporte(request):
                    'number': number,
                    'check': False
                   })
+
 def get_transporte_number(request):
+    number_form = NumberForm()
+    numero_oferta = request.POST.get('Oferta')
+    numero_demanda = request.POST.get('Demanda')
+    OfertaFormSet = formset_factory(OfertaForm, extra=int(numero_oferta))
+    DemandaFormSet = formset_factory(DemandaForm, extra=int(numero_demanda))
+    pesoFormSet = formset_factory(PesoForm, extra=(int(numero_oferta) * int(numero_demanda)))
+    oferta_form = OfertaFormSet(prefix='oferta')
+    demanda_form = DemandaFormSet(prefix='demanda')
+    peso_form = pesoFormSet(prefix='peso')
     if request.method == 'POST':
-        number_form=NumberForm()
-        numero_oferta = request.POST.get('Oferta')
-        numero_demanda = request.POST.get('Demanda')
-        OfertaFormSet = formset_factory(OfertaForm, extra=int(numero_oferta))
-        DemandaFormSet = formset_factory(DemandaForm, extra=int(numero_demanda))
-        pesoFormSet = formset_factory(PesoForm, extra=(int(numero_oferta)*int(numero_demanda)))
-        oferta_form = OfertaFormSet(prefix='oferta')
-        demanda_form = DemandaFormSet(prefix='demanda')
-        peso_form = pesoFormSet(prefix='peso')
         return render(request,'mysite/transporte.html',
                       {
                           'number': number_form,
@@ -58,19 +66,30 @@ def get_transporte_number(request):
                           'cont': int(numero_demanda),
                           'check': True
                       })
+    else:
+        return render(request, 'mysite/transporte.html',                  {
+                   'number': number_form,
+                   'check': False
+                  })
+
 
 def get_transporte(request):
     if request.method == 'POST':
         OfertaFormSet = formset_factory(OfertaForm)
         DemandaFormSet = formset_factory(DemandaForm)
+        PesoFormSet = formset_factory(PesoForm)
         oferta_form = OfertaFormSet(request.POST, prefix='oferta')
         demanda_form = DemandaFormSet(request.POST, prefix='demanda')
-        if oferta_form.is_valid() and demanda_form.is_valid():
-            obj = get_transporte_data(oferta_form.cleaned_data, demanda_form.cleaned_data)
+        peso_form = PesoFormSet(request.POST, prefix='peso')
+        if oferta_form.is_valid() and demanda_form.is_valid() and peso_form.is_valid():
+            obj = get_transporte_data(oferta_form.cleaned_data, demanda_form.cleaned_data,
+                                      peso_form.cleaned_data)
             oferta = obj[0]
             demanda = obj[1]
+            peso = obj[2]
 
-            canto_noroeste(oferta,demanda)
+            c = canto_noroeste(oferta,demanda)
+            simplex_transporte(oferta, demanda, peso, c)
 
             return render(request,'mysite/simplex.html',
                           {'z':oferta_form.cleaned_data,
@@ -78,6 +97,7 @@ def get_transporte(request):
         else:
             oferta_form = OfertaFormSet(prefix='oferta')
             demanda_form = DemandaFormSet(prefix='demanda')
+            peso_form = PesoFormSet(prefix='peso')
         return render(request, 'mysite/simplex.html')
 
 
