@@ -89,11 +89,12 @@ def get_transporte(request):
             peso = obj[2]
 
             c = canto_noroeste(oferta,demanda)
-            simplex_transporte(oferta, demanda, peso, c)
+            c = simplex_transporte(oferta, demanda, peso, c)
 
             return render(request,'mysite/simplex.html',
                           {'z':oferta_form.cleaned_data,
-                           'y': demanda_form.cleaned_data})
+                           'y': demanda_form.cleaned_data,
+                           'c': c})
         else:
             oferta_form = OfertaFormSet(prefix='oferta')
             demanda_form = DemandaFormSet(prefix='demanda')

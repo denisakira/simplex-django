@@ -49,8 +49,8 @@ def simplex_transporte(oferta, demanda, peso, c):
             if c[i][j] == 0:
                 cr[i][j] = peso[i][j] - x[i] - x[j+oferta.size]
 
-    if min(cr) >= 0:
-        return
+    if np.min(cr) >= 0:
+        return c
 
     min_index = np.unravel_index(cr.argmin(), cr.shape)
     check_u = False
@@ -100,8 +100,16 @@ def simplex_transporte(oferta, demanda, peso, c):
     max_index_c = p_ciclo_neg[max_index_cn]
 
     aux = cr[min_index_c[0]][min_index_c[1]]
+    aux2 = c[min_index_c[0]][min_index_c[1]]
     cr[min_index_c[0]][min_index_c[1]] = -cr[u][v]
+    c[min_index_c[0]][min_index_c[1]] = 0
     cr[u][v] = aux
+    c[u][v] = aux2
+
 
     cr[max_index_c[0]][max_index_c[1]] = float(cr[max_index_c[0]][max_index_c[1]]) - min_cn
+    c[max_index_c[0]][max_index_c[1]] = float(c[max_index_c[0]][max_index_c[1]]) - min_cn
     cr[d_u][d_v] = float(cr[d_u][d_v]) + min_cn
+    c[d_u][d_v] = float(c[d_u][d_v]) + min_cn
+
+    c = simplex_transporte(oferta, demanda, peso, c)
